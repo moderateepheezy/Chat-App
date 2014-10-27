@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.content.ServiceConnection;
 import android.os.Bundle;
 import android.os.IBinder;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -28,6 +29,7 @@ import java.util.List;
 
 public class MessagingActivity extends Activity {
 
+	private static final String TAG = "This is the recieptaant Message : ";
     private String recipientId;
     private EditText messageBodyField;
     private String messageBody;
@@ -94,7 +96,8 @@ public class MessagingActivity extends Activity {
             Toast.makeText(this, "Please enter a message", Toast.LENGTH_LONG).show();
             return;
         }
-
+        Log.i("Recipitant id", recipientId);
+        Log.i(TAG, messageBody);
         messageService.sendMessage(recipientId, messageBody);
         messageBodyField.setText("");
     }
